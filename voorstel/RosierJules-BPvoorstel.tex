@@ -1,0 +1,43 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachproef
+%==============================================================================
+% Gebaseerd op document class `hogent-article'
+% zie <https://github.com/HoGentTIN/latex-hogent-article>
+
+\documentclass{hogent-article}
+
+% Invoegen bibliografiebestand
+\addbibresource{voorstel.bib}
+
+% Informatie over de opleiding, het vak en soort opdracht
+\studyprogramme{Professionele bachelor toegepaste informatica}
+\course{Bachelorproef}
+\assignmenttype{Onderzoeksvoorstel}
+
+\academicyear{2024-2025}
+
+\title{Hoe kunnen event brokers worden ingezet om webscraping-taken te automatiseren op basis van specifieke triggers?}
+
+\author{Jules Rosier}
+\email{jules.rosier@student.hogent.be}
+
+\supervisor[Co-promotor]{B. De Smaele (Synalco, \href{mailto:bryan@cymo.eu}{bryan@cymo.eu})}
+
+\specialisation{AI \& Data Engineering}
+\keywords{webscraping, event-driven, Kafka}
+
+\begin{document}
+
+\begin{abstract}
+  Dit onderzoek richt zich op het gebruik van event-hubs, zoals Apache Kafka, om webscraping taken te automatiseren op basis van specifieke gebeurtenissen in plaats van traditionele tijdsgebaseerde schema’s. Een proof-of-concept (POC) systeem werd ontwikkeld om scraping-taken te activeren door middel van diverse triggers, waaronder tijdsintervallen en pagina-updates. Het onderzoek analyseert de impact van deze aanpak op schaalbaarheid, fouttolerantie en consistentie van de verzamelde data. Verwacht wordt dat event broker gebaseerde systemen efficiënter en robuuster zijn, met verbeterde flexibiliteit en beter beheer van webscraping onder verschillende omstandigheden. Hoewel ze uitdagingen met zich meebrengen op het gebied van consistentie en systeemcomplexiteit.
+\end{abstract}
+
+\tableofcontents
+
+% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
+% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
+\input{voorstel-inhoud}
+
+\printbibliography[heading=bibintoc]
+
+\end{document}

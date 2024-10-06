@@ -15,37 +15,12 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
-
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
-
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
-
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
-
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
-
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+In een tijdperk waar real-time data essentieel is voor het nemen van beslissingen, is webscraping een steeds belangrijker instrument geworden. Traditioneel worden webscraping-taken vaak gesynchroniseerd door tijdschema's of events van de databank. Event broker gebaseerde systemen kunnen potentieel deze taken op een flexibelere manier automatiseren. Een event broker zoals Apache Kafka of RabbitMQ kan gebruikt worden om webscraping te triggeren op basis van specifieke gebeurtenissen, wat kan leiden tot efficiëntere en schaalbare systemen. Dit onderzoek gaat de mogelijkheden van event-driven architecturen na voor webscraping, de verschillen ervan in vergelijking met traditionele methoden, de uitdagingen op het gebied van fouttolerantie en consistentie. Er word ook na gegaan welke invloed het heeft op de resulteerde data en zijn consistentie, en welke type trigger kunnen gebruikt worden.
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
-
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
-
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
-
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
-
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
-
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -54,31 +29,28 @@ Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle no
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+Data speelt in onze huidige maatschappij een rol die niet te negeren is \autocite{lohr2012age}. In vrijwel alle sectoren wordt data ingezet om processen te verbeteren, inzicht te krijgen in gedrag en toekomstvoorspellingen te doen. Bij gevolg daar van is het verzamel van data zeer belangrijk. Data kan op vele manieren worden verkregen, maak bedrijven geven hun data niet zomaar op een computer leesbare manier vrij. Webscraping is een gevestigde techniek voor het verzamelen van deze soort online data. Vaak word worden scripts op een bepaald tijdsinterval uitgevoerd en de resulterende data weggeschreven naar een databank \autocite{zhao2022web}. Maar door de groeiende schaal dat webscraping plaats vind word het tijd voor vernieuwde architecturen die beter kunnen omgaan met de uitdagingen van grootschalige dataverzameling en de complexe infrastructuur die daarbij komt kijken \autocite{khder2021web}.
+
+Event-driven architecturen (EDA) met event-hubs zoals bijvoorbeeld Apache Kafka, bieden een dynamischer alternatief. In plaats van tijdgebaseerde triggers, activeren deze systemen scraping-taken op basis van gebeurtenissen zoals pagina-updates of gebruikersacties, wat leidt tot efficiëntere dataverzameling \autocite{coronado2015context}. Dit komt omdat EDA het makkelijk maakt om de uitvoer van een scraper een andere scraper laat starten. Dit concept staat centraal bij een event-driven architectuur \autocite{michelson2006event}.
+
+Event-hubs die gebruikt worden als centerpunt van event-driven architecturen brengen ook nog hun eigen voordelen. Systemen zoals Apache Kafka zijn namelijk ontworpen voor gedistribueerde taken en hoge weerstand tegen dataverlies \autocite{garg2013apache}. Dit komt ze vaak bestaan uit clusters van meerdere fysieke of virtuele server. Dit brengt wel extra complexiteit met zich mee maar hoe groter de schaal van de webscraping hoe meer de voordelen van event-hubs zullen uitblinken \autocite{vyas2022performance}. Desondanks mogen de nadelen niet genegeerd worden. Door clustering van de event-hub kan enkel eventual consistency gegarandeerd worden. Dit is in tegenstelling tot klassieke SQL-databanken die contante consistency garanderen. Gelukkig heeft dit feit weinig impact op de werking van webscrapers. Wat nogmaals aantoont data EDA zeer voordelig is voor deze soort taken.
+
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+De methodologie van deze studie richt zich op de ontwikkeling van een proof-of-concept (POC) voor een event broker-georiënteerd webscraping systeem. Dit systeem wordt gebouwd om webscraping-taken te automatiseren op basis van verschillende soorten triggers, zoals tijdsintervallen, pagina-updates en gebruikersinteracties. De gekozen event broker voor dit systeem is Apache Kafka, dat verantwoordelijk zal zijn voor het ontvangen en distribueren van events die scraping-taken starten, maar ook het verwerken van de webscraping data zelf in real-time. De POC zal geschreven worden in Python vanwege het strake webscraping ecosysteem en integratie met andere tools.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+De eerste stap in de opzet van het systeem is het definiëren van de triggers. Dit omvat zowel tijdgebaseerde triggers (bijvoorbeeld scraping elke 30 minuten) als gebeurtenisgebaseerde triggers (bijvoorbeeld wanneer een website een update publiceert). Elke trigger zal een event genereren dat door Kafka wordt verwerkt en naar de juiste scraper wordt gestuurd. Verschillende soorten scrapers worden ingesteld, waarbij elk verantwoordelijk is voor een specifiek domein of type data.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+Vervolgens wordt het systeem geconfigureerd om schaling en fouttolerantie te testen. Scrapers worden als microservices geïmplementeerd, zodat ze afzonderlijk kunnen worden opgeschaald op basis van de belasting. Hierbij wordt onderzocht hoe het systeem reageert op verhoogde verkeersbelasting, het parallel draaien van meerdere scrapers en het herstel van fouten, zoals netwerkproblemen of mislukte scraping-pogingen.
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
-
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+% De laatste fase omvat het monitoren en meten van de prestaties (Moet SMART zijn, mss van scope droppen) van het POC-systeem, met nadruk op nauwkeurigheid en efficiëntie van de scraping-processen onder verschillende omstandigheden. Door te experimenteren met verschillende triggers en workloads, kan worden geëvalueerd welke triggers het beste werken voor specifieke scenario's en hoe het systeem zich gedraagt in termen van snelheid, betrouwbaarheid en foutafhandeling.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
-
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+Het onderzoek verwacht dat event broker-gestuurde architecturen de webscraping efficiënter maken, vooral in scenario's waar meerdere triggers, zoals pagina-updates of gebruikersinteracties, van belang zijn. Het is waarschijnlijk dat event-driven systemen schaalbaarder zijn dan traditionele methoden, vooral omdat ze minder afhankelijk zijn van rigide schema's en beter kunnen omgaan met real-time data. Er wordt ook verwacht dat event brokers bijdragen aan een robuustere fouttolerantie en consistente uitvoering van scraping-taken, doordat ze de taken kunnen verdelen en beheren via een gedecentraliseerd systeem. Er zullen echter uitdagingen zijn op het gebied van consistentie en systeemcomplexiteit.
 
